@@ -52,23 +52,9 @@
           <a class="btn btn-outline-secondary btn-sm mx-2 d-flex align-items-center animate-btn" href="/contact">
             <i class="fa-solid fa-envelope me-2"></i> Contact Us
           </a>
-          <!-- Conditionally rendered links -->
-          <% if (!currUser) { %>
-            <!-- Sign Up Button -->
-            <a class="btn btn-outline-secondary  btn-sm mx-2 d-flex align-items-center animate-btn" href="/signup">
-              <i class="fa-solid fa-user-plus me-2"></i> Sign up
-            </a>
-            <!-- Log In Button -->
-            <a class="btn btn-outline-secondary  btn-sm mx-2 d-flex align-items-center animate-btn" href="/login">
-              <i class="fa-solid fa-sign-in-alt me-2"></i> Log in
-            </a>
-            <% } %>
-              <% if (currUser) { %>
-                <!-- Log Out Button -->
-                <a class="btn btn-danger btn-sm mx-2 d-flex align-items-center animate-btn" href="/logout">
-                  <i class="fa-solid fa-sign-out-alt me-2"></i> Log out
-                </a>
-                <% } %>
+    <a class="btn btn-outline-secondary btn-sm mx-2 d-flex align-items-center animate-btn" href="/listings">
+            <i class="fa-solid fa-home me-2"></i>Home
+          </a>
         </div>
       </div>
     </div>
@@ -118,8 +104,8 @@
   <div class="footer-container">
       <div class="logo-container">
           <a href="/" class="logo-link">
-              <img src="/icons/craftlytech.png" alt="CraftlyTech Logo" class="logo-img" />
-              <span class="logo-text">CraftlyTech</span>
+            <img src="/icons/snapstay.png" alt="Snapstay" class="logo-img" />
+              <span class="logo-text">SnapStay</span>
           </a>
       </div>
       <ul class="footer-links">
