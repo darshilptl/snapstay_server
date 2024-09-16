@@ -1,0 +1,27 @@
+Important Pakages :
+
+npm i -D nodemon
+npm i express 
+npm i mongoose
+npm install express axios
+npm i method-override 
+npm i ejs-mate
+npm i joi 
+npm i express-session   
+npm i connect-flash
+npm i passport 
+npm i passport-local      
+npm i passport-local-mongoose
+npm i multer 
+npm i dotenv
+npm i cloudinary  
+npm i multer-storage-cloudinary
+npm i multer-storage-cloudinary --legacy-peer-deps
+npm install @mapbox/mapbox-sdk  
+
+
+Now Set This Dependencies In Package.json For Run Nodemon App :
+
+ "scripts": {
+    "dev": "nodemon app.js"
+  },

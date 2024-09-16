@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | SnapStay</title>
+  <link rel="icon" href="/public/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm border-bottom sticky-top">
+    <div class="container-fluid">
+
+      <!-- Brand/Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="/listings">
+        <img src="/icons/snapstay.png" alt="SnapStay Logo" width="30" height="30"
+          class="d-inline-block align-text-top me-2">
+        <span class="fw-bold">SnapStay</span>
+      </a>
+
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- Explore Link with Icon -->
+          <a class="nav-link d-flex align-items-center" href="/listings">
+            <i class="fa-solid fa-map-marker-alt me-2"></i> Explore
+          </a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <!-- Add Listing with Icon -->
+          <a class="nav-link d-flex align-items-center" href="/listings/new">
+            <i class="fa-solid fa-plus-circle me-2"></i> Add your Listing
+          </a>
+          <!-- Contact Us Button -->
+          <a class="btn btn-outline-secondary btn-sm mx-2 d-flex align-items-center animate-btn" href="/contact">
+            <i class="fa-solid fa-envelope me-2"></i> Contact Us
+          </a>
+          <!-- Conditionally rendered links -->
+          <% if (!currUser) { %>
+            <!-- Sign Up Button -->
+            <a class="btn btn-outline-secondary  btn-sm mx-2 d-flex align-items-center animate-btn" href="/signup">
+              <i class="fa-solid fa-user-plus me-2"></i> Sign up
+            </a>
+            <!-- Log In Button -->
+            <a class="btn btn-outline-secondary  btn-sm mx-2 d-flex align-items-center animate-btn" href="/login">
+              <i class="fa-solid fa-sign-in-alt me-2"></i> Log in
+            </a>
+            <% } %>
+              <% if (currUser) { %>
+                <!-- Log Out Button -->
+                <a class="btn btn-danger btn-sm mx-2 d-flex align-items-center animate-btn" href="/logout">
+                  <i class="fa-solid fa-sign-out-alt me-2"></i> Log out
+                </a>
+                <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="contact-section">
+    <div class="contact-form-container">
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <p>Reach Out, We're Here to Help!</p>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="Email address" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Describe your project in detail" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <div class="connect-options">
+          <p>Or connect with</p>
+          <a href="mailto:darshilptl03@gmail.com" class="email-btn">Gmail</a>
+          <a href="https://wa.me/+918200273346" class="whatsapp-btn">Whatsapp</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-image">
+      <img src="/images/contactus.png" alt="Contact Us Image" />
+    </div>
+  </section>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="logo-container">
+          <a href="/" class="logo-link">
+              <img src="/icons/craftlytech.png" alt="CraftlyTech Logo" class="logo-img" />
+              <span class="logo-text">CraftlyTech</span>
+          </a>
+      </div>
+      <ul class="footer-links">
+          <li><a href="/" class="footer-link">Home</a></li>
+          <li><a href="/Contact" class="footer-link">Contact Us</a></li>
+          <li><a href="/Terms-Conditions" class="footer-link">Terms & Conditions</a></li>
+          <li><a href="/PrivacyPolicy" class="footer-link">Privacy Policy</a></li>
+      </ul>
+      <div class="social-media-links">
+          <a href="https://www.linkedin.com/in/darshil-patel-42307a257" target="_blank" class="social-icon" aria-label="LinkedIn">
+              <!-- LinkedIn SVG Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.225 0h-20.45C.995 0 0 .995 0 2.225v19.55C0 23.005.995 24 2.225 24h20.55C23.005 24 24 23.005 24 22.225v-19.55C24 .995 23.005 0 22.225 0zm-14.7 20.452h-3.6v-10.5h3.6v10.5zm-1.8-11.95c-1.15 0-2.1-.95-2.1-2.1 0-1.15.95-2.1 2.1-2.1 1.15 0 2.1.95 2.1 2.1 0 1.15-.95 2.1-2.1 2.1zm15.45 11.95h-3.6v-5.5c0-1.3-.025-3-1.8-3-1.8 0-2.1 1.4-2.1 2.8v5.7h-3.6v-10.5h3.6v1.4h.05c.5-.95 1.75-1.95 3.6-1.95 3.85 0 4.55 2.55 4.55 5.85v5.5z"/>
+              </svg>
+          </a>
+          <a href="https://x.com/darshilptl03?t=dtVGKJ1YYZb1WwuLRSEp1g&s=09" target="_blank" class="social-icon" aria-label="Twitter">
+              <!-- Twitter SVG Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57c-.885.392-1.83.656-2.825.775 1.014-.607 1.794-1.566 2.165-2.724-.95.56-2.005.974-3.127 1.193-.895-.955-2.173-1.55-3.594-1.55-2.717 0-4.926 2.207-4.926 4.926 0 .387.045.765.127 1.126C7.691 8.094 4.066 6.13 1.64 3.161c-.427.733-.666 1.582-.666 2.488 0 1.716.874 3.226 2.198 4.116-.81-.026-1.574-.248-2.243-.616v.061c0 2.396 1.703 4.394 3.96 4.845-.414.112-.848.171-1.293.171-.316 0-.623-.031-.923-.087.624 1.953 2.433 3.375 4.576 3.415-1.675 1.313-3.785 2.095-6.086 2.095-.395 0-.787-.023-1.175-.067 2.178 1.396 4.768 2.209 7.548 2.209 9.056 0 14.002-7.497 14.002-13.986 0-.213-.005-.426-.014-.637.961-.693 1.8-1.56 2.462-2.549l-.047-.02z"/>
+              </svg>
+          </a>
+          <a href="https://www.instagram.com/craftlytech?igsh=bWVubzE4ZjRmaTls" target="_blank" class="social-icon" aria-label="Instagram">
+              <!-- Instagram SVG Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.206 0 3.586.012 4.85.07 1.2.059 2.043.26 2.516.44.618.236 1.063.54 1.53 1.007.467.467.771.912 1.007 1.53.18.473.38 1.316.44 2.516.058 1.264.07 1.644.07 4.85s-.012 3.586-.07 4.85c-.059 1.2-.26 2.043-.44 2.516-.236.618-.54 1.063-1.007 1.53-.467.467-.912.771-1.53 1.007-.473.18-1.316.38-2.516.44-1.264.058-1.644.07-4.85.07s-3.586-.012-4.85-.07c-1.2-.059-2.043-.26-2.516-.44-.618-.236-1.063-.54-1.53-1.007-.467-.467-.771-.912-1.007-1.53-.18-.473-.38-1.316-.44-2.516C2.175 15.586 2.163 15.206 2.163 12s.012-3.586.07-4.85c.059-1.2.26-2.043.44-2.516.236-.618.54-1.063 1.007-1.53.467-.467.912-.771 1.53-1.007.473-.18 1.316-.38 2.516-.44C8.414 2.175 8.794 2.163 12 2.163zm0-2.163C8.738 0 8.307.012 7.049.07 5.798.126 4.73.4 3.86.77 2.684 1.227 1.713 2.198.77 3.86.4 4.73.126 5.798.07 7.049.012 8.307 0 8.738 0 12s.012 3.693.07 4.949c.056 1.251.33 2.319.77 3.086.467 1.18 1.438 2.151 3.086 3.086.767.44 1.835.714 3.086.77 1.256.058 1.677.07 4.949.07s3.693-.012 4.949-.07c1.251-.056 2.319-.33 3.086-.77 1.18-.467 2.151-1.438 3.086-3.086.44-.767.714-1.835.77-3.086.058-1.256.07-1.677.07-4.949s-.012-3.693-.07-4.949c-.056-1.251-.33-2.319-.77-3.086-.467-1.18-1.438-2.151-3.086-3.086C18.693.4 17.625.126 16.374.07 15.114.012 14.683 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm5.5-10.162a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/>
+              </svg>
+          </a>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 CraftlyTech. All rights reserved.</p>
+      </div>
+  </div>
+</footer>
+  <script>
+    // JavaScript for handling client-side validation
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+      };
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\d{10}$/;
+
+      // Validation
+      if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+        Swal.fire("Error", "All fields are required.", "error");
+        return;
+      }
+      if (!emailRegex.test(formData.email)) {
+        Swal.fire("Error", "Invalid email address.", "error");
+        return;
+      }
+      if (!phoneRegex.test(formData.phone)) {
+        Swal.fire("Error", "Invalid phone number.", "error");
+        return;
+      }
+      if (formData.message.length < 10) {
+        Swal.fire("Error", "Message should be at least 10 characters long.", "error");
+        return;
+      }
+
+      // Simulate form submission
+      Swal.fire("Form Submitted", "Thank you for reaching out to us. We will be in touch with you shortly.", "success");
+
+      // Reset form
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+</body>
+
+<style>
+
+  /* Navbar styles  */
+  .navbar {
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* Hover effects for links */
+  .nav-link {
+    color: #555;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #007bff;
+  }
+
+  /* Buttons with animations */
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .btn i {
+    font-size: 1.2em;
+  }
+
+  /* Button hover animations */
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+  }
+
+  .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+  }
+
+  .btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+  }
+
+  /* Button animation */
+  .animate-btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .animate-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+
+  .animate-btn:hover::after {
+    left: 100%;
+  }
+
+  /* Navbar shadow on scroll */
+  .navbar.sticky-top {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(50%);
+  }
+
+  /* Icon adjustments */
+  .nav-link i,
+  .btn i {
+    font-size: 1.2em;
+    color: #007bff;
+  }
+
+  .navbar-brand i {
+    font-size: 1.5em;
+  }
+   /* Navbar styles  */
+
+
+
+
+  /* Contact Section */
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .contact-section {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .contact-form-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .contact-form {
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-form h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .contact-form p {
+    text-align: center;
+    color: #777;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  textarea {
+    min-height: 60px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .submit-btn:hover {
+    background-color: #3730a3;
+  }
+
+  .connect-options {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .connect-options p {
+    color: #333;
+  }
+
+  .connect-options a {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4f46e5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .connect-options a:hover {
+    background-color: #3730a3;
+  }
+
+  .contact-image {
+    flex: 1;
+    display: none;
+  }
+
+  .contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .contact-image {
+      display: block;
+    }
+  }
+
+  .back-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+
+  /* Contact Section */
+
+
+
+  /* Footer */
+  
+  body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer {
+        background: linear-gradient(135deg, #b6d1f9 10%, #ffffff 90%);
+        color: #333;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-container {
+        margin-bottom: 30px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        animation: scaleIn 0.5s ease-in-out;
+    }
+
+    .logo-img {
+        width: 40px;
+        height: auto;
+        transition: transform 0.3s;
+    }
+
+    .logo-img:hover {
+        transform: scale(1.1);
+        animation: bounce 0.5s ease-in-out;
+    }
+
+    .logo-text {
+        margin-left: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        color: #333;
+        font-size: 18px;
+        animation: slideUp 0.5s ease-in-out;
+    }
+
+    .footer-link {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .footer-link:hover {
+        color: #ff6f61;
+        animation: pulse 0.5s ease-in-out;
+    }
+
+    .social-media-links {
+        margin: 30px 0;
+        display: flex;
+        gap: 20px;
+        animation: slideUp 0.5s ease-in-out;
+    }
+
+    .social-icon {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s;
+        animation: scaleIn 0.5s ease-in-out;
+    }
+
+    .social-icon svg {
+        width: 70%;
+        height: auto;
+        fill: #333;
+        transition: fill 0.3s, transform 0.3s;
+    }
+
+    .social-icon:hover svg {
+        fill: #ff6f61;
+        transform: scale(1.1);
+        animation: bounce 0.5s ease-in-out;
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        font-size: 16px;
+        color: #666;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-10px);
+        }
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>

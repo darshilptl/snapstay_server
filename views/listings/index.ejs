@@ -1,0 +1,117 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+  <h3 class="text-center mb-4">All Listings</h3>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+    <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none">
+      <div class="card listing-card shadow-lg position-relative">
+        <div class="card-img-wrapper">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" />
+          <div class="card-img-overlay text-white d-flex align-items-end p-2 overlay-text">
+            <span><%= listing.owner.username || 'Owner Name' %></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.title %></h5>
+          <p class="card-text">
+            <b>&#8377; <%= listing.price.toLocaleString("en-IN") %>/night</b>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+
+</body>
+
+<style>
+  /* Center the heading with margin-bottom */
+  h3 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  /* Card styling */
+  .listing-card {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 12px;
+    position: relative;
+    background-color: #fff; /* White background for the card */
+  }
+
+  /* Card hover effect */
+  .listing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Card image styling */
+  .card-img-wrapper {
+    position: relative;
+    height: 20rem;
+    overflow: hidden;
+  }
+
+  .card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  /* Image zoom effect on hover */
+  .listing-card:hover .card-img-top {
+    transform: scale(1.1);
+  }
+
+  /* Image overlay text */
+  .card-img-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Show overlay on hover */
+  .listing-card:hover .card-img-overlay {
+    opacity: 1;
+  }
+
+  /* Overlay text styling */
+  .overlay-text {
+   
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for better readability */
+  }
+
+  /* Card title and price */
+  .card-title {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: #000000; /* Primary color for card titles */
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .card-title:hover {
+    color: #0056b3; /* Darker shade on hover */
+  }
+
+  .card-text {
+    margin-left: 1rem;
+    color: #333;
+    font-size: 1.1rem; /* Slightly larger font size for better readability */
+  }
+
+  /* Listing link styling */
+  .listing-link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

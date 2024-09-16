@@ -1,0 +1,251 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="container mt-5">
+            <!-- Listing Title -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <h3 class="listing-title">
+                        <%= listing.title %>
+                    </h3>
+                </div>
+            </div>
+
+            <!-- Listing Card -->
+            <div class="card listing-card mx-auto shadow-lg border-light rounded-lg">
+                <div class="card-img-wrapper">
+                    <img src="<%= listing.image.url %>" class="card-img-top listing-img" alt="listing_img">
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5 class="card-subtitle">Owner</h5>
+                        <p class="card-text owner-name">
+                            <span class="badge bg-primary owner-badge">
+                                <%= listing.owner.username %>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="card-subtitle">Description</h5>
+                        <p class="card-text listing-description">
+                            <%= listing.description %>
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="card-text"><strong>Price:</strong> &#8377; <span class="price">
+                                <%= listing.price.toLocaleString("en-IN") %>
+                            </span></p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="card-text"><strong>Location:</strong> <span class="location">
+                                <%= listing.location %>
+                            </span></p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="card-text"><strong>Country:</strong> <span class="country">
+                                <%= listing.country %>
+                            </span></p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="card-text"><strong>Email:</strong> <a href="mailto:off-campus@gmail.com"
+                                class="email-link">off-campus@gmail.com</a> for booking</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditional Buttons -->
+            <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+                <div class="btns text-center mt-4">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark mx-2 animate-btn">Edit</a>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="d-inline">
+                        <button type="submit" class="btn btn-danger mx-2 animate-btn">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+    </body>
+
+    <style>
+        /* Container Styling */
+        .container {
+            max-width: 900px;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title Styling */
+        .listing-title {
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Card Styling */
+        .listing-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 100%;
+            background-color: #fff;
+            position: relative;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        /* Card Hover Effect */
+        .listing-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Image Styling */
+        .listing-img {
+            height: 300px;
+            /* Fixed height for uniformity */
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        /* Image Hover Effect */
+        .listing-card:hover .listing-img {
+            transform: scale(1.05);
+            filter: brightness(0.85);
+        }
+
+        /* Card Body Styling */
+        .card-body {
+            padding: 2rem;
+            font-size: 1rem;
+            color: #555;
+            background-color: #f8f9fa;
+            /* Light background for contrast */
+            border-radius: 10px;
+            /* Rounded corners for the card body */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for depth */
+        }
+
+        .card-subtitle {
+            margin-left: 1rem;
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #007bff;
+            /* Primary color for subtitles */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            margin-left: 2rem;
+            font-size: 1rem;
+            color: #333;
+            /* Darker color for better readability */
+        }
+
+        .owner-badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            /* Rounded badge */
+            color: #fff;
+            /* White text for contrast */
+        }
+
+        /* Email Link */
+        .email-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+            color: #0056b3;
+            /* Darker blue on hover */
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Button Hover Animation */
+        .btn-dark {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background-color: #495057;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+        }
+
+        /* Button Animation */
+        .animate-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .animate-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
